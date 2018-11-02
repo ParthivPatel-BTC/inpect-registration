@@ -1,0 +1,19 @@
+<% unless flash.empty? %>
+  <% flash.each do |name, message| %>
+    <% case name
+      when 'alert'
+        css_class = 'alert-danger'
+      when 'notice'
+        css_class = 'alert-success'
+      when 'warning'
+        css_class = 'alert-warning'
+      else
+      end
+    %>
+    <div role="alert" class="alert <%= css_class %> alert-dismissible">
+      <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span></button>
+      <%= message %>
+    </div>
+    <% flash.clear %>
+  <% end %>
+<% end %>

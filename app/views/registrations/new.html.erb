@@ -1,0 +1,43 @@
+<% states = [['Alabam', 'AL'], ['Alaska', 'AK'], ['Arizona', 'AZ'], ['Arkansas', 'AR'], ['Delaware','DE'], ['Florida','FL'], ['Georgia','GA'], ['Hawaii','HI'], ['Illinois', 'IL'], ['Indiana','IN'], ['Iowa','IA'], ['Kansas', 'KS'], ['Kentucky','KY'], ['Louisiana','LA'], ['Maine', 'ME'], ['Michigan', 'MI'], ['Montana','MT'], ['Nebraska','NE'], ['Nevada', 'NV'], ['New Hampshire','NH'], ['New Jersey', 'NJ'], ['New Mexico', 'NM'], ['North Carolina','NC'], ['North Dakota','ND'], ['Ohio', 'OH'], ['Oklahoma'], ['OK'], ['Oregon', 'OR'], ['Pennsylvania', 'PA'], ['South Carolina', 'SC'], ['South Dakota', 'SD'], ['Tennessee', 'TN'], ['Texas', 'TX'], ['Utah', 'UT'], ['Virginia', 'VA'], ['West Virginia', 'WV'], ['Wisconsin', 'WI'], ['Wyoming', 'WY'] ]  %>
+
+<% questions = [['What was your favorite toy when you were a child?', 1], ['What is your favorite radio station?', 0], ['What is your favorite cuisine?', 2], ['What is the first name of your oldest niece?', 3], ["What is a relative's telephone number that is not your own?", 4], ['What is the name of your favorite pet?', 5], ['Type a significant date in your life?', 6], ['In what city was your mother born?', 7], ['What is the name of your favorite childhood friend?', 8], ["What is your parents' wedding anniversary date?", 9], ['What is the name of the manager at your first job?', 10], ['What is the nick name of your grandmother?', 11] ] %>
+
+<div class='container'>
+  <div class ='col-md-6 col-md-offset-3'>
+    <%= form_tag '/registrations', method: :post do  %>
+      <div class="form-group">
+        <%= select_tag "registration[state]", options_for_select(states), :include_blank => 'Select your state' , class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag 'registration[first_name]', '', class: 'form-control', placeholder: 'First name' %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag 'registration[last_name]', '', class: 'form-control', placeholder: 'Last name' %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag 'registration[email]', '', class: 'form-control', placeholder: 'Email address' %>
+      </div>
+      <div class="form-group">
+        <%= password_field_tag 'registration[password]', '', class: 'form-control', placeholder: 'Password'  %>
+      </div>
+      <div class="form-group">
+        <%= password_field_tag 'registration[confirm_password]', '', class: 'form-control', placeholder: 'Retype password' %>
+      </div>
+      <div class="form-group">
+        <%= select_tag "registration[securityQuestions][0]", options_for_select(questions), :include_blank => 'Pick a question' , class: 'form-control' %>
+        <%= text_field_tag 'registration[securityQuestions][0]', '', class: 'form-control', placeholder: 'Type an answer'  %>
+      </div>
+      <div class="form-group">
+        <%= select_tag "registration[securityQuestions][1]", options_for_select(questions), :include_blank => 'Pick a question' , class: 'form-control' %>
+        <%= text_field_tag 'registration[securityQuestions][1]', '', class: 'form-control', placeholder: 'Type an answer'  %>
+      </div>
+      <div class="form-group">
+        <%= select_tag "registration[securityQuestions][2]", options_for_select(questions), :include_blank => 'Pick a question' , class: 'form-control' %>
+        <%= text_field_tag 'registration[securityQuestions][2]', '', class: 'form-control', placeholder: 'Type an answer'  %>
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    <% end %>
+  </div>
+</div>
+
+
